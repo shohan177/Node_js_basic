@@ -1,32 +1,44 @@
-//commomjs type
-// const fs = require('fs');
+// import { parse } from 'url';
+import { basename, dirname, parse } from 'path';
 
-//moduler type
-import { writeFile, writeFileSync, appendFileSync, readFileSync, renameSync, unlink } from 'fs'
+// const url = parse('https://shohan.com/shop');
 
-//async type 
-writeFile('filename.text', 'hi node you are awesome', (err, data) => {
-    console.log(err)
-})
+// console.log(url)
 
-//sync type
-writeFileSync('filenameSync.text', 'hi this sync file sytem')
 
-//add in same file 
-appendFileSync('filenameSync.text', '\nwe want to learn more')
+// retrun Url {
+//     protocol: 'https:',
+//     slashes: true,
+//     auth: null,
+//     host: 'shohan.com',
+//     port: null,
+//     hostname: 'shohan.com',
+//     hash: null,
+//     search: null,
+//     query: null,
+//     pathname: '/shop',
+//     path: '/shop',
+//     href: 'https://shohan.com/shop'
+//   }
+//--------------------------
+const base = basename('https://shohan.com/shop/last-valu')
 
-// renameSync('file_location','rename')
+console.log(base)  //return "last-valu"
 
-//delete file
-unlink('./filename.text', (err) => {
-    console.log(err)
-})
+//----------------------------
+//file derectory 
+const dir = dirname('https://shohan.com/shop/last-valu/index.js')
 
-//read file sync
-let data = readFileSync('./db.json')
+console.log(dir) //return https://shohan.com/shop/last-valu
+//---------------------------------
+const dirPrase = parse('https://shohan.com/shop/last-valu/index.js')
 
-//buffer system data return 
-console.log(data)
+console.log(dirPrase)
 
-//buffer convert into string
-console.log(data.toString())
+// //return {
+//   root: '',
+//   dir: 'https://shohan.com/shop/last-valu',
+//   base: 'index.js',
+//   ext: '.js',
+//   name: 'index'
+// }
